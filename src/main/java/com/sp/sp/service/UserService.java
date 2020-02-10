@@ -1,7 +1,7 @@
 package com.sp.sp.service;
 
 
-import com.sp.sp.model.mongo.UserModel;
+import com.sp.sp.entity.UserMongo;
 import com.sp.sp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class UserService {
             return false;
         }
 
-        UserModel user = userRepository.findUserByUserName(userName);
+        UserMongo user = userRepository.findUserByUserName(userName);
         if (user.getPassWord().equals(passWord)){
             //登陆成功
             return true;
@@ -28,12 +28,12 @@ public class UserService {
         return false;
     }
     //用户注册
-    public boolean register(UserModel userModel){
+    public boolean register(UserMongo userModel){
         userRepository.saveUser(userModel);
         return true;
     }
     //获取用户信息
-    public UserModel getUserInfo(String userName){
+    public UserMongo getUserInfo(String userName){
         return userRepository.findUserByUserName(userName);
     }
 
