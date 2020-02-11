@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * 1.控制器的路由绑定,参数绑定
+ * 2.mongo的操作
+ * */
 @Controller
 public class AuthController {
 

@@ -1,12 +1,15 @@
 package com.sp.sp;
 
+import com.sp.sp.entity.UserModel;
 import com.sp.sp.repository.UserModelRepository;
 import com.sp.sp.repository.UserRepository;
+import org.json.JSONObject;
+import org.json.JSONString;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 @SpringBootTest
 class SpApplicationTests {
@@ -19,19 +22,26 @@ class SpApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println("我来测试一下");
+
+        Map<String,String> m =new HashMap<String, String>();
+        m.put("ds","fddf");
+
+        List<Map<String,String>> person=new ArrayList<Map<String,String>>();
+        person.add(0,m);
+
+
+        System.out.println(person);
     }
     @Test
     void contextLoads2() {
-        List<Map<Object,Object>> user = userModelRepository.List();
-        for(Map<Object,Object> u :user){
+        List<UserModel> user = userModelRepository.List();
 
-            for(Map.Entry<Object, Object> vo : u.entrySet()){
-                vo.getKey();
-                vo.getValue();
-                System.out.println(vo.getKey()+"  "+vo.getValue());
-            }
+        for (int i = 0; i < user.size(); i++) {
 
+            System.out.println(user.get(i));
         }
+
+
+
     }
 }

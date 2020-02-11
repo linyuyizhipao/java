@@ -5,18 +5,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Map;
 
 @Repository
-public interface UserModelRepository extends JpaRepository<UserModel,Long> {
+public interface UserModelRepository extends JpaRepository<UserModel,Integer> {
 
 
     /**
-     * 条件查询订单
+     * 这是执行sql语句，注意 nativeQuery=true要设置
      */
 
-    @Query(value="select username,name from UserModel")
-    List<Map<Object,Object>> List();
+    @Query(value="select id,username,name,password from UserModel",nativeQuery = true)
+    List<UserModel> List();
 
+    //@Query(value="select username,name from UserModel")
+    //List<Map> List();
 }

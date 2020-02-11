@@ -1,0 +1,22 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/testing_base
+  datasource:
+    url: jdbc:mysql://localhost:3306/default
+    username: default
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true #打印sql
+
+server:
+  port: 8080
+  servlet:
+    context-path: /hugo #进入网站的路由前缀
+
+limit:
+  setParam: "这里可以配置自己的参数值"
+  useParam: "记得要与: 隔一个空格${limit.setParam}"
