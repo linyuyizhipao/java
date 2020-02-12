@@ -3,11 +3,13 @@ package com.sp.sp;
 import com.sp.sp.entity.UserModel;
 import com.sp.sp.repository.UserModelRepository;
 import com.sp.sp.repository.UserRepository;
+import com.sp.sp.util.RedisUtil;
 import org.json.JSONObject;
 import org.json.JSONString;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.*;
 
@@ -16,6 +18,13 @@ class SpApplicationTests {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
 
     @Autowired
     private UserModelRepository userModelRepository;
@@ -41,7 +50,17 @@ class SpApplicationTests {
             System.out.println(user.get(i));
         }
 
+    }
 
-
+    @Test
+    public void testRedis() throws Exception {
+        redisUtil.set("sd","qqq");
+        Object fd = redisUtil.get("sd");
+        System.out.println(fd);
+    }
+    @Test
+    public void testExpire() throws Exception {
+        long fd = redisUtil.getExpire("sd");
+        System.out.println(fd);
     }
 }
