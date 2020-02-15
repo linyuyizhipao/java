@@ -1,11 +1,10 @@
 package com.sp.sp;
 
+import com.sp.sp.componen.ImlOne;
 import com.sp.sp.entity.UserModel;
 import com.sp.sp.repository.UserModelRepository;
 import com.sp.sp.repository.UserRepository;
 import com.sp.sp.util.RedisUtil;
-import org.json.JSONObject;
-import org.json.JSONString;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,9 +24,10 @@ class SpApplicationTests {
     @Autowired
     private RedisUtil redisUtil;
 
-
     @Autowired
+    @ImlOne("")
     private UserModelRepository userModelRepository;
+
 
     @Test
     public void contextLoads() {
