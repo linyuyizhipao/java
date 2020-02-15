@@ -23,7 +23,7 @@ class AuthControllerTest {
 
     @Test
     void editNickName() throws Exception {
-        MockHttpServletRequestBuilder res = MockMvcRequestBuilders.post("/hugo/register");
+        MockHttpServletRequestBuilder res = MockMvcRequestBuilders.post("/register");
         mvc.perform(res).andExpect(MockMvcResultMatchers.status().isOk());
     }
 }

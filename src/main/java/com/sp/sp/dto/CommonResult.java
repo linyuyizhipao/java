@@ -54,7 +54,14 @@ public class CommonResult {
         this.message = "操作失败";
         return this;
     }
-
+    /**
+     * 普通失败提示信息
+     */
+    public CommonResult exception(int code,String msg) {
+        this.code = code;
+        this.message = msg;
+        return this;
+    }
     /**
      * 参数验证失败使用
      *

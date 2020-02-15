@@ -1,5 +1,6 @@
 package com.sp.sp.controller;
 
+import com.sp.sp.dto.CommonResult;
 import com.sp.sp.entity.UserMongo;
 import com.sp.sp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,20 +39,22 @@ public class AuthController {
                         @RequestParam(value = "email",defaultValue = "13147199599@163.com") String emai,
                         @RequestParam(value = "headimgurl",defaultValue = "http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg") String headimgurl
     ) {
-        UserMongo userModel = new UserMongo();
-        userModel.setEmail(emai);
-        userModel.setHeadimgurl(headimgurl);
-        userModel.setNickName(nickName);
-        userModel.setUserName(userName);
-        userModel.setPassWord(passWord);
-        userModel.setId(10);
-        boolean b = userService.register(userModel);
-        if(b == true){
-            return "注册成功";
+        if(!confirm_pass_word.equals(passWord)){
+            return new CommonResult().failed();
         }
-        return "注册失败";
-    }
 
+        UserMongo userMongo = new UserMongo();
+        userMongo.setEmail(emai);
+        userMongo.setHeadimgurl(headimgurl);
+        userMongo.setNickName(nickName);
+        userMongo.setUserName(userName);
+        userMongo.setPassWord(passWord);
+        boolean b = userService.register(userMongo);
+        if(b == true){
+            return new CommonResult().success(userMongo);
+        }
+        return new CommonResult().failed();
+    }
 
     @GetMapping( "/getUserInfo")
     @ResponseBody
