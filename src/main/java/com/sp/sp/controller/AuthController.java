@@ -51,6 +51,8 @@ public class AuthController {
         }
         return "注册失败";
     }
+
+
     @GetMapping( "/getUserInfo")
     @ResponseBody
     public Object getUserInfo(@RequestParam(value = "user_name",defaultValue = "hugo") String userName

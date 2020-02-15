@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update # 每次会根据实体更新数据库表结构
+      ddl-auto: none # 每次会根据实体更新数据库表结构
     show-sql: true #打印sql
   redis:
     database: 0
