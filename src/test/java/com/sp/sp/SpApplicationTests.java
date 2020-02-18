@@ -4,6 +4,7 @@ import com.sp.sp.componen.ImlOne;
 import com.sp.sp.entity.UserModel;
 import com.sp.sp.repository.UserModelRepository;
 import com.sp.sp.repository.UserRepository;
+import com.sp.sp.service.MessageSenderService;
 import com.sp.sp.util.RedisUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,11 @@ class SpApplicationTests {
     private RedisTemplate redisTemplate;
 
     @Autowired
+    private MessageSenderService messageSenderService;
+
+    @Autowired
     private RedisUtil redisUtil;
+
 
     @Autowired
     @ImlOne("")
@@ -62,5 +67,9 @@ class SpApplicationTests {
     public void testExpire() throws Exception {
         long fd = redisUtil.getExpire("sd");
         System.out.println(fd);
+    }
+    @Test
+    public void sendR() {
+        messageSenderService.send();
     }
 }
