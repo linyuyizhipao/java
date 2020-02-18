@@ -1,6 +1,7 @@
 package com.sp.sp;
 
 import com.sp.sp.componen.ImlOne;
+import com.sp.sp.entity.RebbitMqEntity;
 import com.sp.sp.entity.UserModel;
 import com.sp.sp.repository.UserModelRepository;
 import com.sp.sp.repository.UserRepository;
@@ -70,6 +71,9 @@ class SpApplicationTests {
     }
     @Test
     public void sendR() {
-        messageSenderService.send();
+        RebbitMqEntity rebbitMqEntity = new RebbitMqEntity();
+        rebbitMqEntity.setAge(3);
+        rebbitMqEntity.setName("hugohugo");
+        messageSenderService.send(rebbitMqEntity);
     }
 }
