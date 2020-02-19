@@ -29,7 +29,6 @@ class SpApplicationTests {
     @Autowired
     private RedisUtil redisUtil;
 
-
     @Autowired
     @ImlOne("")
     private UserModelRepository userModelRepository;
@@ -75,5 +74,10 @@ class SpApplicationTests {
         rebbitMqEntity.setAge(3);
         rebbitMqEntity.setName("hugohugo");
         messageSenderService.send(rebbitMqEntity);
+    }
+
+    @Test
+    public void pro() {
+        System.out.println("111111111111");
     }
 }
