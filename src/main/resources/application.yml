@@ -38,7 +38,17 @@ spring:
 server:
   port: 8080
   servlet:
-    context-path: /hugo #进入网站的路由前缀
+    context-path:  #进入网站的路由前缀
+
+#添加Thymeleaf配置
+thymeleaf:
+  cache: false
+  prefix: classpath:/templates/
+  suffix: .html
+  mode: HTML5
+  encoding: UTF-8
+  content-type: text/html
+
 
 limit:
   setParam: "这里可以配置自己的参数值"

@@ -8,6 +8,12 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 本配置声明了rebbitmq的队列，交换机；以及交换机与队列的关联
+ * java这种方式好在用代码就映射了所使用的服务对象，
+ * 类似于mysql中的表，我们不也通常使用代码去做一层orm映射机制么
+ */
+
 @Configuration
 public class RabbitConfig {
 
@@ -56,6 +62,7 @@ public class RabbitConfig {
     TopicExchange exchange() {
         return new TopicExchange("exchange");
     }
+
     @Bean
     FanoutExchange fanoutExchange() {
         return new FanoutExchange("fanoutExchange");
@@ -63,6 +70,7 @@ public class RabbitConfig {
 
     /**
      * 将队列topic.message与exchange绑定，binding_key为topic.message,就是完全匹配
+     *
      * @param queueMessage
      * @param exchange
      * @return
@@ -74,6 +82,7 @@ public class RabbitConfig {
 
     /**
      * 将队列topic.messages与exchange绑定，binding_key为topic.#,模糊匹配
+     *
      * @param queueMessages
      * @param exchange
      * @return
@@ -84,7 +93,7 @@ public class RabbitConfig {
     }
 
     @Bean
-    Binding bindingExchangeA(Queue AMessage,FanoutExchange fanoutExchange) {
+    Binding bindingExchangeA(Queue AMessage, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(AMessage).to(fanoutExchange);
     }
 
